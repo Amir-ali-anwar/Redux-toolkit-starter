@@ -1,10 +1,10 @@
 import React from 'react'
-import {ChevronUp,ChevronDown} from '../icons'
-import { useDispatch,useSelector } from 'react-redux'
-import {removeItem,increasecart,decreasecart} from '../features/cart/cartSlice'
-const CartItem = ({title,price,img,amount,id}) => {
+import { ChevronUp, ChevronDown } from '../icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeItem, increasecart, decreasecart } from '../features/cart/cartSlice'
+const CartItem = ({ title, price, img, amount, id }) => {
   // console.log(id)
- const dispatch=useDispatch();
+  const dispatch = useDispatch();
   return (
     <article className='cart-item'>
       <img src={img} alt={title} />
@@ -13,7 +13,7 @@ const CartItem = ({title,price,img,amount,id}) => {
         <h4 className='item-price'>{price}</h4>
         <button
           className='remove-btn'
-          onClick={()=>dispatch(removeItem(id))}
+          onClick={() => dispatch(removeItem(id))}
         >
           remove
         </button>
@@ -21,14 +21,20 @@ const CartItem = ({title,price,img,amount,id}) => {
       <div>
         <button
           className='amount-btn'
-          onClick={()=>dispatch(increasecart(id))}
+          onClick={() => dispatch(increasecart(id))}
         >
           <ChevronUp />
         </button>
         <p className='amount'>{amount}</p>
         <button
           className='amount-btn'
-          onClick={()=>dispatch(decreasecart(id))}
+          onClick={() => {
+            if (amount === 1) {
+              dispatch(removeItem(id));
+              // return;
+            }
+            dispatch(decreasecart({ id }));
+          }}
         >
           <ChevronDown />
         </button>

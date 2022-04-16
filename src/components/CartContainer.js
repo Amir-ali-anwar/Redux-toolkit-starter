@@ -1,13 +1,20 @@
 import React from 'react'
 import CartItem from './CartItem';
+import { useSelector } from 'react-redux';
 const CartContainer = () => {
+  const {amount,total,cart}=useSelector((state)=>state.cart)
+  // console.log(cart)
   return (
     <section className='cart'>
       <header>
         <h2>your bag</h2>
       </header>
       <div>
-        <CartItem />
+        {
+         cart.map((item,index)=>(
+           <CartItem key={index} {...item} />
+         )) 
+        }
       </div>
       <footer>
         <hr />

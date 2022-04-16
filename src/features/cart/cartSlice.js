@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import cartdata from '../../cartItems';
 const initialState={
-    cart:[],
+    cart:cartdata,
     loading:false,
     amount:0,
     total:0
@@ -19,16 +19,13 @@ const cartSlice=createSlice({
            state.cart= state.cart.filter((item)=>item.id !== Itemid) 
         },
         increasecart:(state,action)=>{
-        const id=action.payload;
-        const Itemamount= state.cart.find((item)=>item.id ===id)
-        console.log(Itemamount)
-        // state.cart= Itemamount.amount+1
+        const Itemamount= state.cart.find((item)=>item.id ===action.payload)
+        Itemamount.amount = Itemamount.amount + 1;   
         },
         decreasecart:(state,action)=>{
             const id=action.payload;
             const Itemamount= state.cart.find((item)=>item.id ===id)
-            console.log(Itemamount)
-            // state.cart= Itemamount.amount+1
+            Itemamount.amount = Itemamount.amount - 1; 
         }
     }
 })

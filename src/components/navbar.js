@@ -8,7 +8,7 @@ const navbar = () => {
       <div className='nav-container'>
         <CartIcon />
         <div className='amount-container'>
-          <p className='total-amount'></p>
+          <p className='total-amount'>12</p>
         </div>
       </div>
     </div>

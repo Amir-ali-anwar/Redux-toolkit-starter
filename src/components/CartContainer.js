@@ -1,12 +1,15 @@
 import React from 'react'
-
+import CartItem from './CartItem';
 const CartContainer = () => {
-    return (
-        <section className='cart'>
-            <header>
-                <h2>your bag</h2>
-            </header>
-            <footer>
+  return (
+    <section className='cart'>
+      <header>
+        <h2>your bag</h2>
+      </header>
+      <div>
+        <CartItem />;
+      </div>
+      <footer>
         <hr />
         <div className='cart-total'>
           <h4>
@@ -17,8 +20,8 @@ const CartContainer = () => {
           clear cart
         </button>
       </footer>
-        </section>
-    )
+    </section>
+  )
 }
 
 export default CartContainer

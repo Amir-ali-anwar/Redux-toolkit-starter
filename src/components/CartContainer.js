@@ -7,7 +7,7 @@ const CartContainer = () => {
         <h2>your bag</h2>
       </header>
       <div>
-        <CartItem />;
+        <CartItem />
       </div>
       <footer>
         <hr />

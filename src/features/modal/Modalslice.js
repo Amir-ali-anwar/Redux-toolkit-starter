@@ -10,7 +10,7 @@ const ModalSlice = createSlice({
         openModal: (state, action) => {
             state.isOPen = true;
         },
-        closeodal: (state, action) => {
+        closeModal: (state, action) => {
             state.isOPen = false;
         },
     }

@@ -8,9 +8,9 @@ const initialState={
     amount:4,
     total:0
 }
-export const getCartItems=createAsyncThunk(
+// export const getCartItems=createAsyncThunk(
 
-)
+// )
 const cartSlice=createSlice({
     name:'cart',
     initialState,
@@ -35,9 +35,13 @@ const cartSlice=createSlice({
         state.cart.reduce((acc,curr)=>{
                 acc.amount+=curr.amount;
                 acc.total+=curr.amount*curr.price
+                console.log({
+                   amount:acc.amount,
+                  total:acc.total
+                })
                 {
-                  state.amount=acc.amount
-                  state.total=acc.total  
+                  state.amount= acc.amount
+                  state.total=acc.total 
                 }           
                return acc; 
             },{amount:0,total:0})

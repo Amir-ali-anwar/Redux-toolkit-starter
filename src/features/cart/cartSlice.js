@@ -33,18 +33,33 @@ const cartSlice = createSlice({
             Itemamount.amount = Itemamount.amount + 1;
         },
         decreasecart: (state, action) => {
-            const id = action.payload;
-            const Itemamount = state.cart.find((item) => item.id === id)
-            Itemamount.amount = Itemamount.amount - 1;
+            const { id } = action.payload;
+
+            state.cart.forEach((item) => {
+                if (item.id == id) {
+                    console.log(item)
+                    item.amount = item.amount - 1;
+                }
+            })
         },
         calculateTotals: (state) => {
+            //     let amount = 0;
+            //     let total = 0;
+            //     state.cart.forEach((item) => {
+            //         amount += item.amount;
+            //         total += item.amount * item.price;
+            //     });
+            //     state.amount = amount;
+            //     state.total = total;
+            // }
+            if (state.cart.length == 0) {
+                state.amount = 0
+                state.total = 0
+            }
             state.cart.reduce((acc, curr) => {
                 acc.amount += curr.amount;
                 acc.total += curr.amount * curr.price
-                // console.log({
-                //     amount: acc.amount,
-                //     total: acc.total
-                // })
+
                 {
                     state.amount = acc.amount
                     state.total = acc.total
